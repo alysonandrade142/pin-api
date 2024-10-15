@@ -3,7 +3,7 @@ import psycopg2
 from psycopg2 import sql
 
 conn = psycopg2.connect(
-    dbname='api_db',
+    dbname='pin_db',
     user='postgres',
     password='123456',
     host='localhost',
@@ -34,7 +34,7 @@ def process_time_of_company(value):
 def import_data():
 
     # Ler o arquivo CSV
-    df = pd.read_csv('content/data.csv', delimiter=';')
+    df = pd.read_csv('scripts/content/data.csv', delimiter=';')
 
     # Inserir dados em áreas
     for area in df['area'].unique():
