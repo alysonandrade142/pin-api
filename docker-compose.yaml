@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: go-api
+    environment:
+      SRV_MODE: "production"
+      SRV_PORT: "8080"
+      SRV_DB_HOST: "db"
+      SRV_DB_USER: "postgres"
+      SRV_DB_PASS: "123456"
+      SRV_DB_PORT: "5432"
+      SRV_DB_NAME: "api_db"
+      SRV_RMQ_URI: "amqp://guest:guest@rabbitmq:5672/"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db-pin
+      - rabbitmq-pin
+
+  db-pin:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: api_db
+    ports:
+      - "5432:5432"
+
+  rabbitmq-pin:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"  # RabbitMQ Management UI
