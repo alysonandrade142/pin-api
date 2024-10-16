@@ -14,13 +14,19 @@ type FeedbackRepositoryMock struct {
 // GetFeedbackByID é o método mockado
 func (m *FeedbackRepositoryMock) GetFeedbackByID(id int) (*entity.Feedback, error) {
 	args := m.Called(id)
-	return args.Get(0).(*entity.Feedback), args.Error(1)
+	if args.Get(0) != nil {
+		return args.Get(0).(*entity.Feedback), args.Error(1)
+	}
+	return nil, args.Error(1)
 }
 
 // GetAllFeedbacks é o método mockado
 func (m *FeedbackRepositoryMock) GetAllFeedbacks() ([]entity.Feedback, error) {
 	args := m.Called()
-	return args.Get(0).([]entity.Feedback), args.Error(1)
+	if args.Get(0) != nil {
+		return args.Get(0).([]entity.Feedback), args.Error(1)
+	}
+	return nil, args.Error(1)
 }
 
 // CreateFeedback é o método mockado

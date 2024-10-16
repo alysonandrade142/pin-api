@@ -12,7 +12,6 @@ import (
 )
 
 func main() {
-	// Configura o logger
 	log := logger.SetupLogger()
 
 	// Inicializa o banco de dados
