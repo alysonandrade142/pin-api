@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "24c28bee-4d9d-43ae-8bfc-406e888f2198",
+		"name": "Basic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33367789",
+		"_collection_link": "https://winter-trinity-772054.postman.co/workspace/New-Team-Workspace~743011c1-3886-45cd-b887-1b54b74f0281/collection/33367789-24c28bee-4d9d-43ae-8bfc-406e888f2198?action=share&source=collection_link&creator=33367789"
+	},
+	"item": [
+		{
+			"name": "Get Feedback (ALL)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Feedback By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/feedback/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feedback",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Feedback",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"funcionario_id\": 1,\n  \"feedback\": \"Excelente trabalho!\",\n  \"comentarios_feedback\": \"O funcionário tem se destacado.\",\n  \"interacao_gestor\": \"Ótima interação com o gestor.\",\n  \"comentarios_interacao_gestor\": \"Conversa fluida e produtiva.\",\n  \"clareza_carreira\": \"Clareza nas oportunidades de carreira.\",\n  \"comentarios_clareza_carreira\": \"O funcionário entende as próximas etapas.\",\n  \"expectativa_permanencia\": \"Alta expectativa de permanecer na empresa.\",\n  \"comentarios_expectativa_permanencia\": \"Funcionário está satisfeito com o ambiente e o time.\",\n  \"enps\": 9,\n  \"aberta_enps\": \"Muito provável recomendar a empresa.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Feedback",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/feedback/14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feedback",
+						"14"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

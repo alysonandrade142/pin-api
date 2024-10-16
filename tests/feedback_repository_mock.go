@@ -6,12 +6,10 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-// FeedbackRepositoryMock é um mock do FeedbackRepository
 type FeedbackRepositoryMock struct {
 	mock.Mock
 }
 
-// GetFeedbackByID é o método mockado
 func (m *FeedbackRepositoryMock) GetFeedbackByID(id int) (*entity.Feedback, error) {
 	args := m.Called(id)
 	if args.Get(0) != nil {
@@ -20,7 +18,6 @@ func (m *FeedbackRepositoryMock) GetFeedbackByID(id int) (*entity.Feedback, erro
 	return nil, args.Error(1)
 }
 
-// GetAllFeedbacks é o método mockado
 func (m *FeedbackRepositoryMock) GetAllFeedbacks() ([]entity.Feedback, error) {
 	args := m.Called()
 	if args.Get(0) != nil {
@@ -29,8 +26,12 @@ func (m *FeedbackRepositoryMock) GetAllFeedbacks() ([]entity.Feedback, error) {
 	return nil, args.Error(1)
 }
 
-// CreateFeedback é o método mockado
 func (m *FeedbackRepositoryMock) CreateFeedback(feedback *entity.Feedback) error {
 	args := m.Called(feedback)
+	return args.Error(0)
+}
+
+func (m *FeedbackRepositoryMock) DeleteFeedback(id int) error {
+	args := m.Called(id)
 	return args.Error(0)
 }

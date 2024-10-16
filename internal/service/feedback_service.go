@@ -10,6 +10,7 @@ type FeedbackService interface {
 	CreateFeedback(feedbackDTO dto.FeedbackDTO) error
 	GetFeedbackByID(id int) (*entity.Feedback, error)
 	GetAllFeedbacks() ([]entity.Feedback, error)
+	DeleteFeedback(id int) error
 }
 
 type feedbackService struct {
@@ -43,4 +44,8 @@ func (s *feedbackService) GetFeedbackByID(id int) (*entity.Feedback, error) {
 
 func (s *feedbackService) GetAllFeedbacks() ([]entity.Feedback, error) {
 	return s.repo.GetAllFeedbacks()
+}
+
+func (s *feedbackService) DeleteFeedback(id int) error {
+	return s.repo.DeleteFeedback(id)
 }

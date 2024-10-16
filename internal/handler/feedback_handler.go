@@ -28,9 +28,9 @@ func (h *FeedbackHandler) CreateFeedback(w http.ResponseWriter, r *http.Request)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.WriteHeader(http.StatusCreated)
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(feedbackDTO)
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode("Feedback criado com sucesso!")
 }
 
 func (h *FeedbackHandler) GetFeedbackByID(w http.ResponseWriter, r *http.Request) {
@@ -56,4 +56,19 @@ func (h *FeedbackHandler) GetAllFeedbacks(w http.ResponseWriter, r *http.Request
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(feedbacks)
+}
+
+func (h *FeedbackHandler) DeleteFeedback(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(mux.Vars(r)["id"])
+	if err != nil {
+		http.Error(w, "Invalid ID", http.StatusBadRequest)
+		return
+	}
+	if err := h.service.DeleteFeedback(id); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode("Feedback deletado com sucesso!")
 }

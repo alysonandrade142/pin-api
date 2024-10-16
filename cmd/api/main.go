@@ -29,6 +29,7 @@ func main() {
 	r.HandleFunc("/feedback", feedbackHandler.CreateFeedback).Methods("POST")
 	r.HandleFunc("/feedback/{id}", feedbackHandler.GetFeedbackByID).Methods("GET")
 	r.HandleFunc("/feedback", feedbackHandler.GetAllFeedbacks).Methods("GET")
+	r.HandleFunc("/feedback/{id}", feedbackHandler.DeleteFeedback).Methods("DELETE")
 
 	// Iniciar o servidor
 	log.Println("Servidor rodando na porta 8080")

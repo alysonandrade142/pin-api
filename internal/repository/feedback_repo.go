@@ -10,6 +10,7 @@ type FeedbackRepository interface {
 	CreateFeedback(feedback *entity.Feedback) error
 	GetFeedbackByID(id int) (*entity.Feedback, error)
 	GetAllFeedbacks() ([]entity.Feedback, error)
+	DeleteFeedback(id int) error
 }
 
 type feedbackRepository struct {
@@ -38,4 +39,8 @@ func (r *feedbackRepository) GetAllFeedbacks() ([]entity.Feedback, error) {
 		return nil, err
 	}
 	return feedbacks, nil
+}
+
+func (r *feedbackRepository) DeleteFeedback(id int) error {
+	return r.db.Delete(&entity.Feedback{}, id).Error
 }

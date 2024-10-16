@@ -106,3 +106,18 @@ func TestCreateFeedback_Error(t *testing.T) {
 
 	feedbackRepoMock.AssertExpectations(t)
 }
+
+func TestDeleteFeedback_Success(t *testing.T) {
+	feedbackRepoMock := new(FeedbackRepositoryMock)
+
+	feedback := &entity.Feedback{
+		ID: 1,
+	}
+
+	feedbackRepoMock.On("DeleteFeedback", feedback.ID).Return(nil)
+
+	err := feedbackRepoMock.DeleteFeedback(feedback.ID)
+	assert.NoError(t, err)
+
+	feedbackRepoMock.AssertExpectations(t)
+}
