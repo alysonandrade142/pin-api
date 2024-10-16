@@ -22,11 +22,11 @@ docker-compose up -d
 
 ```
 
-Com o Docker rodando normamlmente, será necessário criar e importar os dados na base utilizando um script python. 
+Com o Docker rodando normalmente, será necessário criar e importar os dados na base utilizando um script python. 
 
 ```bash
 
-pip install -r requirements.txt
+pip install -r scripts/requirements.txt
 
 py scripts/main.py
 
